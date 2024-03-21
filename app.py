@@ -29,16 +29,7 @@ def search():
     else:
         return jsonify({'error': 'Both keyword and URL parameters are required'}), 400
 
-@app.route('/csvdata', methods=['GET'])
-def csv_data():
-    data = []
-    with open('data.csv', 'r') as file:
-        reader = csv.reader(file)
-        for row in reader:
-            data.append(row)
-    return jsonify(data)
 
-@app.route('/indexing/status', methods=['GET'])
 def indexing_status():
     global indexing_complete
     return jsonify({'indexing_complete': indexing_complete})
